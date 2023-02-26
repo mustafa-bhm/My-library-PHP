@@ -1,11 +1,33 @@
 
 <?php
 include 'config/database.php';
-// to connect and fetch from database
 
+// to connect and fetch from database
 $sql = 'SELECT * FROM books';
 $result = mysqli_query($con, $sql);
 $books = mysqli_fetch_all($result, MYSQLI_ASSOC );
+
+// *** To post to the database **** //
+if(isset($_POST['submit'])){
+  $bookTitle= filter_input(INPUT_POST, 'bookTitle', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ;
+  $author= filter_input(INPUT_POST, 'author', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ;
+  $cover= filter_input(INPUT_POST, 'cover', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ;
+  $status= filter_input(INPUT_POST, 'status', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+   // sql query to insert to database
+$sql = "INSERT INTO books (bookTitle, author, cover, status) VALUES ('$bookTitle', '$author', '$cover', '$status')";
+
+   // handle error when inserting to database
+if(mysqli_query($con, $sql)){
+     // success
+    echo 'Form submitted successfully ';
+}else {
+
+    // Error
+  echo 'Error' . mysqli_error($con);
+}
+}
+
 ?>
 
 <!DOCTYPE html>
