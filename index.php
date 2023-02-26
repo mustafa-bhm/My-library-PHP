@@ -1,4 +1,12 @@
 
+<?php
+include 'config/database.php';
+// to connect and fetch from database
+
+$sql = 'SELECT * FROM books';
+$result = mysqli_query($con, $sql);
+$books = mysqli_fetch_all($result, MYSQLI_ASSOC );
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,8 +28,8 @@
 
     <form action="" method="POST" class="mt-4 w-75">
       <div class="mb-3">
-        <label for="book-title" class="form-label">Book Title</label>
-        <input type="text" class="form-control" id="book-title" name="book-title" placeholder="Enter book title">
+        <label for="bookTitle" class="form-label">Book Title</label>
+        <input type="text" class="form-control" id="bookTitle" name="bookTitle" placeholder="Enter book title">
       </div>
       <div class="mb-3">
         <label for="author" class="form-label">Author's name</label>
@@ -42,5 +50,25 @@
     </form>
 </div>
 </main>
+<section>
+
+  <div class="container d-flex flex-column align-items-center">
+<?php
+foreach($books as $book): ?>
+  <div class="card my-3 w-75">
+     <div class="card-body text-center">
+       <img src="<?php echo $book['cover']; ?>" alt="" class="src">
+       <div class="text-secondary mt-2">
+         <h3><?php echo $book['bookTitle']; ?> </h3>
+        By <?php echo $book['author'] ?> on <?php echo $book['status'] ?>
+      </div>
+     </div>
+   </div>
+
+<?php endforeach; ?>
+
+
+</div>
+</section>
 </body>
 </html>
