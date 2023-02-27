@@ -20,13 +20,16 @@ $sql = "INSERT INTO books (bookTitle, author, cover, status) VALUES ('$bookTitle
    // handle error when inserting to database
 if(mysqli_query($con, $sql)){
      // success
-    echo 'Form submitted successfully ';
+    header('Location: index.php');
 }else {
 
     // Error
   echo 'Error' . mysqli_error($con);
 }
 }
+
+// *** To Delete Books from Database  *** ///
+
 
 ?>
 
@@ -37,6 +40,7 @@ if(mysqli_query($con, $sql)){
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<link rel="stylesheet" href="./styles.css">
   <title>Document</title>
 </head>
 <body>
@@ -79,11 +83,15 @@ if(mysqli_query($con, $sql)){
 foreach($books as $book): ?>
   <div class="card my-3 w-75">
      <div class="card-body text-center">
-       <img src="<?php echo $book['cover']; ?>" alt="" class="src">
+       <img  src="<?php echo $book['cover']; ?>" class="cover" alt="book cover" >
        <div class="text-secondary mt-2">
          <h3><?php echo $book['bookTitle']; ?> </h3>
-        By <?php echo $book['author'] ?> on <?php echo $book['status'] ?>
+        By : <?php echo $book['author'] ?>
+        <p> Status : <?php echo $book['status'] ?></p>
+                <button type="button" class="btn btn-success">Update</button>
+        <button type="button" class="btn btn-danger">Delete</button>
       </div>
+
      </div>
    </div>
 
