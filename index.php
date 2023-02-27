@@ -28,7 +28,7 @@ if(mysqli_query($con, $sql)){
 }
 }
 
-// *** To Delete Books from Database  *** ///
+
 
 
 ?>
@@ -88,8 +88,8 @@ foreach($books as $book): ?>
          <h3><?php echo $book['bookTitle']; ?> </h3>
         By : <?php echo $book['author'] ?>
         <p> Status : <?php echo $book['status'] ?></p>
-                <button type="button" class="btn btn-success">Update</button>
-        <button type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-success">Update</button>
+        <button type="button" class="btn btn-danger"> <a class="delete-button" href="delete.php?deleteid=<?php echo $book['id'] ?>" >Delete</a> </button>
       </div>
 
      </div>
