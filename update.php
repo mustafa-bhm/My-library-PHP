@@ -20,7 +20,7 @@ if(isset($_POST['submit'])){
   $status= filter_input(INPUT_POST, 'status', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
    // sql query to update database
-$sql_update = "UPDATE `books` SET id='1', bookTitle = '$bookTitle', author = '$author', cover= '$cover', status = '$status'  where id = '1' ";
+$sql_update = "UPDATE `books` SET id='$id', bookTitle = '$bookTitle', author = '$author', cover= '$cover', status = '$status'  where id = '$id' ";
 
    // handle error when updating database
 if(mysqli_query($con, $sql_update )){
@@ -58,20 +58,20 @@ if(mysqli_query($con, $sql_update )){
     <form action="" method="POST" class="mt-4 w-75">
       <div class="mb-3">
         <label for="bookTitle" class="form-label">Book Title</label>
-        <input type="text" class="form-control" id="bookTitle" name="bookTitle"  value = " <?php  echo $book['bookTitle']?> ">
+        <input type="text" class="form-control" id="bookTitle" name="bookTitle"  value ="<?php echo $book['bookTitle']?>">
       </div>
       <div class="mb-3">
         <label for="author" class="form-label">Author's name</label>
-        <input type="text" class="form-control" id="author" name="author" value = "<?php echo $book['author'] ?> ">
+        <input type="text" class="form-control" id="author" name="author" value ="<?php echo $book['author'] ?>">
       </div>
 
       <div class="mb-3">
         <label for="cover" class="form-label"> Book cover </label>
-               <input type="text" class="form-control" id="cover" name="cover" value= "<?php  echo $book['cover'] ?>">
+               <input type="text" class="form-control" id="cover" name="cover" value="<?php echo $book['cover'] ?>">
       </div>
       <div class="mb-3">
         <label for="status" class="form-label">Have you read this book</label>
-        <input type="text" class="form-control" id="status" name="status" value =" <?php echo $book['status'] ?> ">
+        <input type="text" class="form-control" id="status" name="status" value ="<?php echo $book['status'] ?>">
       </div>
       <div class="mb-3">
         <input type="submit" name="submit" value="Update Book" class="btn btn-dark w-100">
