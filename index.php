@@ -56,39 +56,22 @@ $timestamp = date("YmdHis");
 
 
 ?>
+<?php include "./partials/header.php" ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" type="text/css" href="./styles.css">
-  <title>Document</title>
-</head>
 <body>
 <main>
 
-<nav class="navbar d-flex justify-content-center navbar-dark gray">
-  <a class="navbar-brand" href="./index.php">My Library PHP</a>
- </nav>
-
-
-  <div class="container d-flex flex-column align-items-center">
-
-
+  <div class="container d-flex flex-column align-items-center mb-6">
 
     <form action="" method="POST" class="mt-4 w-75">
-      <div class="mb-3">
+      <div class="mb-1">
         <label for="bookTitle" class="form-label">Book Title</label>
         <input type="text" class="form-control <?php echo $bookTitleErr ? 'is-invalid' : null; ?>" id="bookTitle" name="bookTitle" placeholder="Enter book title">
         <div class="invalid-feedback">
           <?php echo $bookTitleErr ?>
         </div>
       </div>
-      <div class="mb-3">
+      <div class="mb-1">
         <label for="author" class="form-label">Author's name</label>
         <input type="text" class="form-control <?php echo $authorErr ? 'is-invalid' : null; ?> " id="author" name="author" placeholder="Enter Author's name">
         <div class="invalid-feedback">
@@ -96,32 +79,32 @@ $timestamp = date("YmdHis");
         </div>
       </div>
 
-      <div class="mb-3">
+      <div class="mb-1">
         <label for="cover" class="form-label"> Book cover </label>
         <input type="text" class="form-control <?php echo $coveErr ? 'is-invalid': null; ?> " id="cover" name="cover" placeholder="Enter image link">
          <div class="invalid-feedback">
           <?php echo $coveErr ?>
           </div>
       </div>
-      <div class="mb-3">
+      <div class="mb-1">
         <label for="status" class="form-label">Have you read this book</label>
-        <input type="text" class="form-control <?php echo $statusErr ? 'is-invalid': null; ?>" id="status" name="status" placeholder="Have you read this book (Yes / No)">
+        <input type="text" class="form-control <?php echo $statusErr ? 'is-invalid': null; ?>" id="status" name="status" placeholder="Have you read this book (Yes / No/ in Progress)">
         <div class="invalid-feedback">
           <?php echo $statusErr ?>
           </div>
             </div>
-      <div class="mb-3">
+      <div class="mb-1">
         <input type="submit" name="submit" value="Add Book" class="btn btn-dark gray w-100">
       </div>
     </form>
 </div>
 </main>
+
 <section>
+  <div class="container d-flex flex-row align-items-center justify-content-around flex-wrap  ">
+  <?php
 
-  <div class="container d-flex flex-row align-items-center justify-content-around flex-wrap">
-<?php
-
-foreach($books as $book): ?>
+   foreach($books as $book): ?>
   <div class="card my-1 ">
     <div class="card-body text-center ">
       <img  src="<?php echo $book['cover']; ?>" class="cover-image" alt="book cover" >
@@ -138,15 +121,9 @@ foreach($books as $book): ?>
 
   <?php endforeach; ?>
 
-
-
-</div>
+  </div>
 </section>
-<footer>
-<a class="footer-icon" href="https://github.com/mustafa-bhm" target="_blank" rel="noopener noreferrer">GitHub <i class="fa-brands fa-github fa-lg"></i> </a>
 
-
-</footer>
-
+<?php include "./partials/footer.php" ?>
 </body>
 </html>

@@ -1,12 +1,10 @@
 .cover-image{
   width: 15rem;
-  height: 18rem;
+  height: 16rem;
 }
 .delete-btn{
   color: white;
   text-decoration: none;
-
-
 }
 .btn-delete{
   background-color: #ff5722;
@@ -18,12 +16,12 @@
   color: white;
 }
 
-h3{
-color: rgb(0, 255, 30);
-}
-
 body{
   background-color: #eeeeee;
+
+}
+section{
+  height: 100vh;
 }
 .gray{
   background-color: #2d4059;
@@ -35,7 +33,8 @@ footer{
   color: white;
   text-align: center;
   padding: 1rem;
-
+  position: fixed;
+  bottom: 0;
 }
 .footer-icon{
   font-size: 1rem;
