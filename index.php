@@ -52,7 +52,7 @@ if(empty($_POST['status'])){
     }
 }
 
-
+$timestamp = date("YmdHis");
 
 
 ?>
@@ -64,17 +64,21 @@ if(empty($_POST['status'])){
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" type="text/css" href="./styles.css">
   <title>Document</title>
 </head>
 <body>
 <main>
+
+<nav class="navbar d-flex justify-content-center navbar-dark gray">
+  <a class="navbar-brand" href="./index.php">My Library PHP</a>
+ </nav>
+
+
   <div class="container d-flex flex-column align-items-center">
-    <nav>
-      <a href="">Home</a>
-      <a href="./about.php">About</a>
-    </nav>
-    <h1>My Library PHP</h1>
+
+
 
     <form action="" method="POST" class="mt-4 w-75">
       <div class="mb-3">
@@ -107,7 +111,7 @@ if(empty($_POST['status'])){
           </div>
             </div>
       <div class="mb-3">
-        <input type="submit" name="submit" value="Add Book" class="btn btn-dark w-100">
+        <input type="submit" name="submit" value="Add Book" class="btn btn-dark gray w-100">
       </div>
     </form>
 </div>
@@ -118,15 +122,15 @@ if(empty($_POST['status'])){
 <?php
 
 foreach($books as $book): ?>
-  <div class="card my-2 w-17">
+  <div class="card my-1 ">
     <div class="card-body text-center ">
-      <img  src="<?php echo $book['cover']; ?>" class="cover" alt="book cover" >
+      <img  src="<?php echo $book['cover']; ?>" class="cover-image" alt="book cover" >
       <div class="text-secondary mt-2">
-        <h5 class="text-wrap " style="width: 20rem;" ><?php echo $book['bookTitle']; ?> </h5>
+        <h5 class="text-wrap "  ><?php echo $book['bookTitle']; ?> </h5>
         Author : <?php echo $book['author'] ?>
-        <p> Status : <?php echo $book['status'] ?></p>
-       <a type="button"  class="btn btn-success" href="update.php?updateid=<?php echo $book['id'] ?>" >Update</a>
-       <a type="button" class="btn btn-danger"  href="delete.php?deleteid=<?php echo $book['id'] ?>" >Delete</a>
+        <p> Read : <?php echo $book['status'] ?></p>
+       <a type="button"  class="btn btn-update" href="update.php?updateid=<?php echo $book['id'] ?>" >Update</a>
+       <a class="btn btn-delete "  href="delete.php?deleteid=<?php echo $book['id'] ?>" >Delete</a>
       </div>
 
     </div>
@@ -138,5 +142,11 @@ foreach($books as $book): ?>
 
 </div>
 </section>
+<footer>
+<a class="footer-icon" href="https://github.com/mustafa-bhm" target="_blank" rel="noopener noreferrer">GitHub <i class="fa-brands fa-github fa-lg"></i> </a>
+
+
+</footer>
+
 </body>
 </html>
