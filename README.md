@@ -4,7 +4,7 @@ A full-stack web app that allows users to add, update and delete their favorite 
 ## Teck Stack:
 
 - Front-end: HTML, CSS , Bootstrap
-- Back-end : Php, Xampp
+- Back-end : Php, MySQL,  Xampp
 
 ## Live Demo
 
